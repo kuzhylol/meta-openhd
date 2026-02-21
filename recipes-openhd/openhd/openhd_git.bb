@@ -2,8 +2,6 @@ SUMMARY = "OpenHD: Open-source digital video transmission system"
 LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://../LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
-
-
 SRC_URI = "gitsm://github.com/openhd/OpenHD.git;protocol=https;branch=dev-release"
 
 SRCREV = "0338167bdd6ba7415e1b84d0e9a4057a42609a12"
@@ -25,7 +23,6 @@ RDEPENDS:${PN} += " \
   gstreamer1.0-plugins-ugly \
   gstreamer1.0-libav \
   v4l-utils \
-  openhd-webui \
 "
 
 SYSTEMD_SERVICE:${PN} = "openhd_mod.service"
@@ -45,7 +42,6 @@ do_install:append() {
 }
 
 FILES:${PN} += " \
-    ${bindir}/* \
     ${systemd_unitdir}/system/openhd.service \
     /Video \
     /boot/openhd \
