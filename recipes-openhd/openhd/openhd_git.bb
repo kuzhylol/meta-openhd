@@ -20,6 +20,7 @@ RDEPENDS:${PN} += " \
     gstreamer1.0-plugins-good \
     gstreamer1.0-plugins-ugly \
     v4l-utils \
+    usbutils \
 "
 
 do_install:append() {
