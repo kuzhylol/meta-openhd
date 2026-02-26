@@ -2,9 +2,9 @@ SUMMARY = "OpenHD: Open-source digital video transmission system"
 LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
-SRC_URI = "gitsm://github.com/openhd/OpenHD.git;protocol=https;branch=2.7-evo"
+SRC_URI = "gitsm://github.com/openhd/OpenHD.git;protocol=https;branch=release"
 PV = "1.0+git${SRCPV}"
-SRCREV = "${AUTOREV}"
+SRCREV = "d9ed49108ab9c920df955ffefba7d5efc6d3e6fd"
 
 S = "${WORKDIR}/git"
 
@@ -19,25 +19,26 @@ RDEPENDS:${PN} += " \
     gstreamer1.0-plugins-base \
     gstreamer1.0-plugins-good \
     gstreamer1.0-plugins-ugly \
-    v4l-utils \
     usbutils \
+    v4l-utils \
 "
 
 do_install:append() {
     install -d ${D}${systemd_unitdir}/system/
-    install -m 0644 ${S}/systemd/openhd_mod.service ${D}${systemd_unitdir}/system/
+    install -m 0644 ${S}/systemd/openhd.service ${D}${systemd_unitdir}/system/
 
     # OpenHD specific directories and files
     install -d ${D}/Video/
-    install -d ${D}/boot/openhd/
     install -d ${D}${datadir}/openhd/
     touch ${D}${datadir}/openhd/licence
+
+    install -d ${D}/boot/openhd/
     touch ${D}/boot/openhd/air.txt
 }
 
 OECMAKE_SOURCEPATH = "${S}/OpenHD"
 
-SYSTEMD_SERVICE:${PN} = "openhd_mod.service"
+SYSTEMD_SERVICE:${PN} = "openhd.service"
 SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 
 FILES:${PN} += " \
