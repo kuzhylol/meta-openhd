@@ -8,14 +8,14 @@ SRC_URI = "git://github.com/OpenHD/rtl8812au.git;branch=v5.6.4.2;protocol=https"
 SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"
+PV = "5.6.4.2-git"
 
-EXTRA_OEMAKE += "KSRC=${STAGING_KERNEL_BUILDDIR}"
+EXTRA_OEMAKE:append = " KSRC=${STAGING_KERNEL_BUILDDIR}"
 
 do_configure:append() {
     sed -i 's/^CONFIG_PLATFORM_I386_PC *= *y/CONFIG_PLATFORM_I386_PC = n/' ${S}/Makefile
 }
 
-do_install() {
-    install -d ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/kernel/drivers/net/wireless/
-    install -m 0644 ${S}/88XXau_ohd.ko ${D}${nonarch_base_libdir}/modules/${KERNEL_VERSION}/kernel/drivers/net/wireless/
+do_configure:append:raspberrypi4_64() {
+    sed -i 's/^CONFIG_PLATFORM_ARM64_RPI *= *n/CONFIG_PLATFORM_ARM64_RPI = y/' ${S}/Makefile
 }
