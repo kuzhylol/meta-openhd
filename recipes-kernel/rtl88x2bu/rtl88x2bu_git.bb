@@ -9,14 +9,13 @@ SRCREV = "0f4686be0607ba244469dd3170f8d946488d5197"
 
 S = "${WORKDIR}/git"
 
-DEPENDS += "virtual/kernel"
-
-KERNEL_MODULE_AUTOLOAD += "88x2bu_ohd"
-
-EXTRA_OEMAKE += "ARCH=arm64 CROSS_COMPILE=${TARGET_PREFIX} KSRC=${STAGING_KERNEL_BUILDDIR}"
+EXTRA_OEMAKE:append = " KSRC=${STAGING_KERNEL_BUILDDIR}"
 
 do_configure:append() {
     sed -i 's/^CONFIG_PLATFORM_I386_PC *= *y/CONFIG_PLATFORM_I386_PC = n/' ${S}/Makefile
+}
+
+do_configure:append:raspberrypi4_64() {
     sed -i 's/^CONFIG_PLATFORM_ARM64_RPI *= *n/CONFIG_PLATFORM_ARM64_RPI = y/' ${S}/Makefile
 }
 
