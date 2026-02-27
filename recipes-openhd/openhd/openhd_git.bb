@@ -37,11 +37,9 @@ do_install:append() {
 }
 
 OECMAKE_SOURCEPATH = "${S}/OpenHD"
-
 SYSTEMD_SERVICE:${PN} = "openhd.service"
-SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 
-FILES:${PN} += " \
+FILES:${PN} += "\
     ${datadir}/openhd/licence \
     ${systemd_unitdir}/system/openhd.service \
     /Video \
