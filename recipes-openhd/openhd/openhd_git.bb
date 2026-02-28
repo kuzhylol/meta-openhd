@@ -42,7 +42,6 @@ SYSTEMD_SERVICE:${PN} = "openhd.service"
 
 FILES:${PN} += "\
     ${datadir}/openhd/licence \
-    ${systemd_unitdir}/system/openhd.service \
     /Video \
     /boot/openhd/air.txt \
 "
