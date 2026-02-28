@@ -13,9 +13,6 @@ EXTRA_OEMAKE:append = " KSRC=${STAGING_KERNEL_BUILDDIR}"
 
 do_configure:append() {
     sed -i 's/^CONFIG_PLATFORM_I386_PC *= *y/CONFIG_PLATFORM_I386_PC = n/' ${S}/Makefile
-}
-
-do_configure:append:raspberrypi4_64() {
     sed -i 's/^CONFIG_PLATFORM_ARM64_RPI *= *n/CONFIG_PLATFORM_ARM64_RPI = y/' ${S}/Makefile
 }
 
