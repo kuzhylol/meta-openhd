@@ -21,6 +21,7 @@ RDEPENDS:${PN} += " \
     gstreamer1.0-plugins-ugly \
     usbutils \
     v4l-utils \
+    networkmanager \
 "
 
 do_install:append() {
