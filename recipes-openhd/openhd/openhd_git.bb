@@ -32,9 +32,6 @@ do_install:append() {
     install -d ${D}/Video/
     install -d ${D}${datadir}/openhd/
     touch ${D}${datadir}/openhd/licence
-
-    install -d ${D}/boot/openhd/
-    touch ${D}/boot/openhd/air.txt
 }
 
 OECMAKE_SOURCEPATH = "${S}/OpenHD"
@@ -43,5 +40,4 @@ SYSTEMD_SERVICE:${PN} = "openhd.service"
 FILES:${PN} += "\
     ${datadir}/openhd/licence \
     /Video \
-    /boot/openhd/air.txt \
 "
