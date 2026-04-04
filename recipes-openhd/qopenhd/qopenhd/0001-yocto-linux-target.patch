@@ -1,0 +1,36 @@
+From 5598a47440f1a836d39fa5eeaaf5b333a36aad4a Mon Sep 17 00:00:00 2001
+From: Oleh Kuzhylnyi <kuzhylol@gmail.com>
+Date: Sat, 4 Apr 2026 19:32:06 +0200
+Subject: [PATCH] yocto linux target
+
+Upstream-Status: Pending
+---
+ QOpenHD.pro   | 1 -
+ platforms.pri | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/QOpenHD.pro b/QOpenHD.pro
+index 814cb4897..6e8876677 100755
+--- a/QOpenHD.pro
++++ b/QOpenHD.pro
+@@ -263,7 +263,6 @@ MacBuild {
+ }
+ 
+ LinuxBuild {
+-    CONFIG += EnableSpeech
+     message("LinuxBuild - config")
+ }
+ 
+diff --git a/platforms.pri b/platforms.pri
+index d6242d0ed..a71b54ab1 100644
+--- a/platforms.pri
++++ b/platforms.pri
+@@ -1,7 +1,7 @@
+ 
+ 
+ linux {
+-    linux-g++ | linux-g++-64 | linux-g++-32 | linux-clang | linux-jetson-nano-g++| linux-RK3566-g++ | linux-rpi4-v3d-g++ | linux-rpi-g++ | linux-rpi-vc4-g++ | linux-rasp-pi-g++ {
++    linux-oe-g++ | linux-g++ | linux-g++-64 | linux-g++-32 | linux-clang | linux-jetson-nano-g++| linux-RK3566-g++ | linux-rpi4-v3d-g++ | linux-rpi-g++ | linux-rpi-vc4-g++ | linux-rasp-pi-g++ {
+         message("LinuxBuild")
+         CONFIG += LinuxBuild
+         DEFINES += __desktoplinux__
