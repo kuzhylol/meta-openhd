@@ -4,8 +4,8 @@ LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1ccabeb20df52b9236fcc6ea3d7e6f55"
 
 SRC_URI = "gitsm://github.com/OpenHD/QOpenHD.git;branch=2.7-evo;protocol=https \
-           file://0001-yocto-linux-target.patch \
            file://qopenhd.service \
+           file://0001-yocto-linux-target.patch \
            "
 
 SRCREV = "${AUTOREV}"
@@ -21,10 +21,12 @@ DEPENDS += "\
     gstreamer1.0-plugins-good \
     libdrm \
     mavlink-headers \
+    qtcharts \
     qtbase \
     qtbase-native \
-    qtcharts \
     qtdeclarative \
+    qtquickcontrols \
+    qtquickcontrols2 \
     qttools-native \
 "
 
@@ -35,13 +37,15 @@ RDEPENDS:${PN} += "\
     gstreamer1.0-plugins-base \
     gstreamer1.0-plugins-good \
     qtbase-plugins \
-    qtcharts \
+    qtcharts-qmlplugins \
     qtdeclarative-qmlplugins \
     qtgraphicaleffects-qmlplugins \
     qtquickcontrols \
+    qtquickcontrols2 \
 "
 
 EXTRA_QMAKEVARS_PRE += " \
+    CONFIG+=kms \
     QMAKE_CXXFLAGS+=-Wno-address-of-packed-member \
     QMAKE_CXXFLAGS+=-Wno-cast-align \
     QMAKE_CXXFLAGS+=-Wno-unused-function \
@@ -52,7 +56,7 @@ EXTRA_QMAKEVARS_PRE += " \
 
 do_install() {
     install -d ${D}${bindir}
-    install -m 0755 ${S}/../build/release/QOpenHD ${D}${bindir}/qopenhd
+    install -m 0755 ${B}/release/QOpenHD ${D}${bindir}/qopenhd
     install -d ${D}${systemd_system_unitdir}
     install -m 0644 ${UNPACKDIR}/qopenhd.service ${D}${systemd_system_unitdir}
 }
@@ -60,4 +64,7 @@ do_install() {
 SYSTEMD_SERVICE:${PN} = "qopenhd.service"
 SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 
-FILES:${PN} += "${bindir}/qopenhd"
+FILES:${PN} += " \
+    ${bindir}/qopenhd \
+    ${systemd_system_unitdir}/qopenhd.service \
+"
