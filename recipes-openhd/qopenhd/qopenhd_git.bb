@@ -11,35 +11,41 @@ SRC_URI = "gitsm://github.com/OpenHD/QOpenHD.git;branch=2.7-evo;protocol=https \
 SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"
+QMAKE_PROFILES = "${S}/QOpenHD.pro"
+EXTRA_QMAKEVARS_PRE += "CONFIG-=EnableSpeech"
 
 inherit qmake5 pkgconfig systemd
 
 DEPENDS += "\
+    ffmpeg \
     gstreamer1.0 \
-    gstreamer1.0-libav \
     gstreamer1.0-plugins-base \
-    gstreamer1.0-plugins-good \
     libdrm \
-    mavlink-headers \
-    qtcharts \
     qtbase \
-    qtbase-native \
+    qtcharts \
     qtdeclarative \
-    qtquickcontrols \
-    qtquickcontrols2 \
+    qtlocation \
     qttools-native \
 "
 
 RDEPENDS:${PN} += "\
+    ffmpeg \
+    fontconfig \
     gstreamer1.0 \
     gstreamer1.0-libav \
     gstreamer1.0-plugins-bad \
     gstreamer1.0-plugins-base \
     gstreamer1.0-plugins-good \
+    gstreamer1.0-plugins-ugly \
+    libdrm \
+    qtbase \
     qtbase-plugins \
+    qtcharts \
     qtcharts-qmlplugins \
+    qtdeclarative \
     qtdeclarative-qmlplugins \
     qtgraphicaleffects-qmlplugins \
+    qtlocation \
     qtquickcontrols \
     qtquickcontrols2 \
 "
@@ -61,10 +67,16 @@ do_install() {
     install -m 0644 ${UNPACKDIR}/qopenhd.service ${D}${systemd_system_unitdir}
 }
 
+do_install:append:rpi() {
+    install -d ${D}${datadir}/qopenhd
+    install -m 0644 ${S}/rpi_qt_eglfs_kms_config.json ${D}${datadir}/qopenhd
+}
+
 SYSTEMD_SERVICE:${PN} = "qopenhd.service"
 SYSTEMD_AUTO_ENABLE:${PN} = "enable"
 
-FILES:${PN} += " \
+FILES:${PN} += "\
     ${bindir}/qopenhd \
     ${systemd_system_unitdir}/qopenhd.service \
+    ${datadir}/qopenhd/rpi_qt_eglfs_kms_config.json \
 "
