@@ -8,7 +8,7 @@ SRC_URI = "gitsm://github.com/OpenHD/QOpenHD.git;branch=2.7-evo;protocol=https \
            file://0001-yocto-linux-target.patch \
            "
 
-SRCREV = "${AUTOREV}"
+SRCREV = "f67981240797b3cb278887ada07133e49dcf5dbb"
 
 S = "${WORKDIR}/git"
 QMAKE_PROFILES = "${S}/QOpenHD.pro"
