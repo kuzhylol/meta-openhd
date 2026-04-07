@@ -26,6 +26,7 @@ DEPENDS += "\
     qtdeclarative \
     qtlocation \
     qttools-native \
+    mavlink-headers \
 "
 
 RDEPENDS:${PN} += "\
