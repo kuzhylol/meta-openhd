@@ -2,9 +2,9 @@ SUMMARY = "OpenHD: Open-source digital video transmission system"
 LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1ebbd3e34237af26da5dc08a4e440464"
 
-SRC_URI = "gitsm://github.com/openhd/OpenHD.git;protocol=https;branch=release"
-PV = "1.0+git${SRCPV}"
-SRCREV = "d9ed49108ab9c920df955ffefba7d5efc6d3e6fd"
+SRC_URI = "gitsm://github.com/openhd/OpenHD.git;protocol=https;branch=2.7-evo"
+PV = "2.7-evo+git${SRCPV}"
+SRCREV = "f07729b35e273fe3612e1aade030a7a86350d1ac"
 
 S = "${WORKDIR}/git"
 
