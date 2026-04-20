@@ -3,12 +3,12 @@ DESCRIPTION = "Qt-based ground station UI for OpenHD"
 LICENSE = "GPL-3.0-only"
 LIC_FILES_CHKSUM = "file://LICENSE;md5=1ccabeb20df52b9236fcc6ea3d7e6f55"
 
-SRC_URI = "gitsm://github.com/OpenHD/QOpenHD.git;branch=2.7-evo;protocol=https \
+SRC_URI = "gitsm://github.com/OpenHD/QOpenHD.git;branch=release;protocol=https \
            file://qopenhd.service \
            file://0001-yocto-linux-target.patch \
            "
 
-SRCREV = "f67981240797b3cb278887ada07133e49dcf5dbb"
+SRCREV = "3d3250168fedbf70deff77e9764dbdb5353163de"
 
 S = "${WORKDIR}/git"
 QMAKE_PROFILES = "${S}/QOpenHD.pro"
