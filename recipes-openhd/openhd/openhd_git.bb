@@ -19,9 +19,9 @@ RDEPENDS:${PN} += " \
     gstreamer1.0-plugins-base \
     gstreamer1.0-plugins-good \
     gstreamer1.0-plugins-ugly \
+    networkmanager-nmcli \
     usbutils \
     v4l-utils \
-    networkmanager \
 "
 
 do_install:append() {
