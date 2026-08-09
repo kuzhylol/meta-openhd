@@ -7,8 +7,6 @@ inherit module
 SRC_URI = "gitsm://github.com/OpenHD/rtl88x2bu.git;branch=master;protocol=https"
 SRCREV = "0f4686be0607ba244469dd3170f8d946488d5197"
 
-S = "${WORKDIR}/git"
-
 EXTRA_OEMAKE:append = " KSRC=${STAGING_KERNEL_BUILDDIR}"
 
 do_configure:append() {

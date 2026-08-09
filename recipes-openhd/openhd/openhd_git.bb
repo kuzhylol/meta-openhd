@@ -6,8 +6,6 @@ SRC_URI = "gitsm://github.com/openhd/OpenHD.git;protocol=https;branch=release"
 PV = "1.0+git${SRCPV}"
 SRCREV = "d9ed49108ab9c920df955ffefba7d5efc6d3e6fd"
 
-S = "${WORKDIR}/git"
-
 inherit cmake pkgconfig systemd
 
 DEPENDS = "flac poco libsodium gstreamer1.0 gstreamer1.0-plugins-base libpcap libusb1 libv4l"

@@ -10,7 +10,6 @@ SRC_URI = "gitsm://github.com/OpenHD/QOpenHD.git;branch=release;protocol=https \
 
 SRCREV = "3d3250168fedbf70deff77e9764dbdb5353163de"
 
-S = "${WORKDIR}/git"
 QMAKE_PROFILES = "${S}/QOpenHD.pro"
 EXTRA_QMAKEVARS_PRE += "CONFIG-=EnableSpeech"
 

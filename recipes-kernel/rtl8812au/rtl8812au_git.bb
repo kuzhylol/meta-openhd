@@ -7,7 +7,6 @@ inherit module
 SRC_URI = "git://github.com/OpenHD/rtl8812au.git;branch=v5.6.4.2;protocol=https"
 SRCREV = "${AUTOREV}"
 
-S = "${WORKDIR}/git"
 PV = "5.6.4.2-git"
 
 EXTRA_OEMAKE:append = " KSRC=${STAGING_KERNEL_BUILDDIR}"

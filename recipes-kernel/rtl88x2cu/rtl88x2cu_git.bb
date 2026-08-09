@@ -7,8 +7,6 @@ inherit module
 SRC_URI = "gitsm://github.com/OpenHD/rtl88x2cu.git;branch=master;protocol=https"
 SRCREV = "${AUTOREV}"
 
-S = "${WORKDIR}/git"
-
 DEPENDS += "virtual/kernel"
 
 KERNEL_MODULE_AUTOLOAD += "88x2cu_ohd"

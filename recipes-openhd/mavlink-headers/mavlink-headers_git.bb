@@ -18,8 +18,6 @@ SRC_URI = "git://github.com/OpenHD/mavlink-headers;protocol=https;branch=main"
 PV = "1.0+git"
 SRCREV = "b131206ee2f90c563506ed74017c1da57210cca9"
 
-S = "${WORKDIR}/git"
-
 do_configure[noexec] = "1"
 do_compile[noexec] = "1"
 
