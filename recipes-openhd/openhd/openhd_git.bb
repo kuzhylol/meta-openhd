@@ -10,6 +10,8 @@ inherit cmake pkgconfig systemd
 
 DEPENDS = "flac poco libsodium gstreamer1.0 gstreamer1.0-plugins-base libpcap libusb1 libv4l"
 
+CXXFLAGS:append = " -include cstdint -include sstream"
+
 RDEPENDS:${PN} += " \
     gstreamer1.0 \
     gstreamer1.0-libav \
